@@ -6,13 +6,17 @@ const nextSequence = () => {
   const randomNumber = Math.floor(Math.random() * 4);
   const randomColor = buttonColors[randomNumber];
   gamePattern.push(randomColor);
-  const audio = new Audio(`./sounds/${randomColor}.mp3`);
-  audio.play();
+  playSound(randomColor);
   $(`.${randomColor}`).fadeOut(200).fadeIn(200);
 };
 
 $(".button").on("click", (event) => {
   const userChosenColor = event.target.id;
   userPattern.push(userChosenColor);
-  console.log(userPattern);
+  playSound(userChosenColor);
 });
+
+const playSound = (color) => {
+  const audio = new Audio(`./sounds/${color}.mp3`);
+  audio.play();
+}
