@@ -1,0 +1,42 @@
+/* CSS Resets */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  height: 20vh;
+  text-align: center;
+  font-size: 5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  border: 5px solid black;
+  border-radius: 15px;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+  margin-top: 20px;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+  margin-top: 20px;
+}
