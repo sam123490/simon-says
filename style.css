@@ -40,3 +40,9 @@ h1 {
   background-color: blue;
   margin-top: 20px;
 }
+
+/* Pressed Animation */
+.pressed {
+  box-shadow: 0 0 20px black;
+  background-color: grey;
+}
