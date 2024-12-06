@@ -1,3 +1,3 @@
-$( "div.yellow" ).click(() => {
-  alert("Hello World!");
-});
+const nextSequence = () => {
+  const randomNumber = Math.floor(Math.random() * 4);
+};
