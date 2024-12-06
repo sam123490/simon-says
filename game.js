@@ -1,6 +1,7 @@
 const buttonColors = ["yellow", "green", "red", "blue"];
 const gamePattern = [];
 const userPattern = [];
+let gameActive = false;
 
 const nextSequence = () => {
   const randomNumber = Math.floor(Math.random() * 4);
@@ -28,3 +29,9 @@ const animatePress = (color) => {
     $(`#${color}`).removeClass("pressed");
   }, "200");
 };
+
+$("#start").on("click", () => {
+  gameActive = true;
+  nextSequence();
+  $("#start").addClass("invisible");
+});
