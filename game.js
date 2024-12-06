@@ -50,6 +50,11 @@ const checkAnswer = (currentLevel) => {
       }, "1000");
     }
   } else {
-    console.log("wrong");
+    $("h1").text(`Game Over!`);
+    playSound("wrong");
+    $("body").addClass("game-over");
+    setTimeout(() => {
+      $("body").removeClass("game-over");
+    }, 400);
   }
 };

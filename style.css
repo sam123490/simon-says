@@ -55,7 +55,7 @@ h1 {
   background-color: blue;
 }
 
-/* Pressed Animation */
+/* Pressed Animation for Game Buttons */
 .pressed {
   box-shadow: 0 0 20px black;
   background-color: grey;
@@ -64,4 +64,8 @@ h1 {
 /* Invisible Class for Start Button */
 .invisible {
   display: none;
+}
+
+.game-over {
+  background-color: red;
 }
