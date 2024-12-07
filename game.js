@@ -47,8 +47,10 @@ const checkAnswer = (currentLevel) => {
     console.log("correct");
     if (gamePattern.length === userPattern.length) {
       setTimeout(() => {
-        userPattern = [];
-        nextSequence();
+        if (gameActive) {
+          userPattern = [];
+          nextSequence();
+        }
       }, "1000");
     }
   } else {
