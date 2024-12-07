@@ -1,5 +1,5 @@
 const buttonColors = ["yellow", "green", "red", "blue"];
-const gamePattern = [];
+let gamePattern = [];
 let userPattern = [];
 let gameActive = false;
 let level = 1;
@@ -15,11 +15,13 @@ const nextSequence = () => {
 };
 
 $(".button").on("click", (event) => {
-  const userChosenColor = event.target.id;
-  userPattern.push(userChosenColor);
-  playSound(userChosenColor);
-  animatePress(userChosenColor);
-  checkAnswer(userPattern.length - 1);
+  if (gameActive) {
+    const userChosenColor = event.target.id;
+    userPattern.push(userChosenColor);
+    playSound(userChosenColor);
+    animatePress(userChosenColor);
+    checkAnswer(userPattern.length - 1);
+  }
 });
 
 const playSound = (color) => {
@@ -50,11 +52,20 @@ const checkAnswer = (currentLevel) => {
       }, "1000");
     }
   } else {
-    $("h1").text(`Game Over!`);
     playSound("wrong");
+    $("h1").text(`Game Over!`);
     $("body").addClass("game-over");
     setTimeout(() => {
       $("body").removeClass("game-over");
     }, 400);
+    startOver();
   }
+};
+
+const startOver = () => {
+  level = 1;
+  gamePattern = [];
+  userPattern = [];
+  gameActive = false;
+  $("#start").removeClass("invisible");
 };
