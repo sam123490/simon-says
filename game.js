@@ -71,3 +71,5 @@ const startOver = () => {
   gameActive = false;
   $("#start").removeClass("invisible");
 };
+
+$("#hard-mode").on("click", () => alert("Hello World!"));
