@@ -72,4 +72,12 @@ const startOver = () => {
   $("#start").removeClass("invisible");
 };
 
-$("#hard-mode").on("click", () => alert("Hello World!"));
+$("#hard-mode").on("click", () => {
+  $("#hard-mode").addClass("hidden");
+  $(".buttons").append(`
+    <div>
+      <div id="cyan" class="cyan button"></div>
+      <div id="purple" class="purple button"></div>
+    </div>
+    `);
+});

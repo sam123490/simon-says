@@ -54,6 +54,15 @@ h1 {
   margin-top: 20px;
 }
 
+.cyan {
+  background-color: cyan;
+}
+
+.purple {
+  background-color: rebeccapurple;
+  margin-top: 20px;
+}
+
 .center-button {
   display: flex;
   justify-content: center;
@@ -77,6 +86,10 @@ h1 {
 /* Invisible Class for Start Button */
 .invisible {
   display: none;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .game-over {
