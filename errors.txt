@@ -1,0 +1,4 @@
+ERROR #1 refactoring the code that adds Event Listeners to the buttons into a function,
+so it can be called when starting a game and afer activating hard-mode to add the Listeners
+to the two additional buttons caused an inexplicable error where you could not get the
+answer correct on hard mode, and after reseting after a loss in normal mode

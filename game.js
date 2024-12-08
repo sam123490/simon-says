@@ -39,7 +39,8 @@ const animatePress = (color) => {
 $("#start").on("click", () => {
   gameActive = true;
   nextSequence();
-  $("#start").addClass("invisible");
+  $("#start").addClass("hidden");
+  $("#hard-mode").addClass("hidden");
 });
 
 const checkAnswer = (currentLevel) => {
@@ -69,7 +70,9 @@ const startOver = () => {
   gamePattern = [];
   userPattern = [];
   gameActive = false;
-  $("#start").removeClass("invisible");
+  setTimeout(() => {
+    $("#start").removeClass("hidden");
+  }, 1000)
 };
 
 $("#hard-mode").on("click", () => {
