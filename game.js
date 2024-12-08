@@ -6,7 +6,7 @@ let level = 1;
 
 const nextSequence = () => {
   $("h1").text(`Level ${level}`);
-  const randomNumber = Math.floor(Math.random() * 4);
+  const randomNumber = Math.floor(Math.random() * buttonColors.length);
   const randomColor = buttonColors[randomNumber];
   gamePattern.push(randomColor);
   playSound(randomColor);
@@ -80,4 +80,14 @@ $("#hard-mode").on("click", () => {
       <div id="purple" class="purple button"></div>
     </div>
     `);
+  buttonColors.push("cyan", "purple");
+  $(".cyan, .purple").on("click", (event) => {
+    if (gameActive) {
+      const userChosenColor = event.target.id;
+      userPattern.push(userChosenColor);
+      playSound(userChosenColor);
+      animatePress(userChosenColor);
+      checkAnswer(userPattern.length - 1);
+    }
+  })
 });
