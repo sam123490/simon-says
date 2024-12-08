@@ -4,6 +4,7 @@ let userPattern = [];
 let gameActive = false;
 let level = 1;
 
+// show user next sequence
 const nextSequence = () => {
   $("h1").text(`Level ${level}`);
   const randomNumber = Math.floor(Math.random() * buttonColors.length);
@@ -14,6 +15,7 @@ const nextSequence = () => {
   level++;
 };
 
+// add event listener to game buttons
 $(".button").on("click", (event) => {
   if (gameActive) {
     const userChosenColor = event.target.id;
@@ -24,6 +26,7 @@ $(".button").on("click", (event) => {
   }
 });
 
+// play sound and animate on user click
 const playSound = (color) => {
   const audio = new Audio(`./sounds/${color}.mp3`);
   audio.play();
@@ -36,6 +39,7 @@ const animatePress = (color) => {
   }, "200");
 };
 
+// start game
 $("#start").on("click", () => {
   gameActive = true;
   nextSequence();
@@ -43,6 +47,7 @@ $("#start").on("click", () => {
   $("#hard-mode").addClass("hidden");
 });
 
+// check user sequence against game sequence
 const checkAnswer = (currentLevel) => {
   if (gamePattern[currentLevel] === userPattern[currentLevel]) {
     console.log("correct");
@@ -65,6 +70,7 @@ const checkAnswer = (currentLevel) => {
   }
 };
 
+// reset game on loss
 const startOver = () => {
   level = 1;
   gamePattern = [];
@@ -75,6 +81,7 @@ const startOver = () => {
   }, 1000)
 };
 
+// activate hard mode
 $("#hard-mode").on("click", () => {
   $("#hard-mode").addClass("hidden");
   $(".buttons").append(`
@@ -94,3 +101,14 @@ $("#hard-mode").on("click", () => {
     }
   })
 });
+
+// deactivate hard mode
+const deactivateHardMode = () => {
+  // remove event handlers on extra buttons
+  $("#cyan, #purple").off();
+  // remove div containing extra buttons
+  $(".buttons div:nth-child(3)").remove();
+  // remove extra colors from buttonColors
+  buttonColors.pop();
+  buttonColors.pop();
+};
