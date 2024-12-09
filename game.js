@@ -44,7 +44,8 @@ $("#start").on("click", () => {
   gameActive = true;
   nextSequence();
   $("#start").addClass("hidden");
-  $("#hard-mode").addClass("hidden");
+  // $("#hard-mode").addClass("hidden");
+  $(".settings").addClass("hidden");
 });
 
 // check user sequence against game sequence
@@ -78,6 +79,7 @@ const startOver = () => {
   gameActive = false;
   setTimeout(() => {
     $("#start").removeClass("hidden");
+  $(".settings").removeClass("hidden");
   }, 1000)
 };
 
