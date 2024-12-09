@@ -18,9 +18,12 @@
 }
 
 h1 {
-  height: 20vh;
   text-align: center;
   font-size: 5rem;
+}
+
+.settings {
+  text-align: center;
 }
 
 .buttons {

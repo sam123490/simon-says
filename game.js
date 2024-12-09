@@ -82,7 +82,7 @@ const startOver = () => {
 };
 
 // activate hard mode
-$("#hard-mode").on("click", () => {
+const activateHardMode = () => {
   $("#hard-mode").addClass("hidden");
   $(".buttons").append(`
     <div>
@@ -100,7 +100,7 @@ $("#hard-mode").on("click", () => {
       checkAnswer(userPattern.length - 1);
     }
   })
-});
+};
 
 // deactivate hard mode
 const deactivateHardMode = () => {
@@ -112,3 +112,19 @@ const deactivateHardMode = () => {
   buttonColors.pop();
   buttonColors.pop();
 };
+
+// select difficulty
+$("#difficulty-select").on("change", () => {
+  const selectDifficultyElement = $("#difficulty-select");
+  const difficulty = selectDifficultyElement[0].value;
+  switch (difficulty) {
+    case 'normal':
+      deactivateHardMode();
+      break;
+    case 'hard':
+      activateHardMode();
+      break;
+    default:
+      console.log(`something went wrong, but the selected difficulty is ${value}`);
+  }
+});

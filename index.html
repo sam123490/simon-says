@@ -10,7 +10,14 @@
   </head>
   <body>
     <h1 class="silkscreen-bold">Simon Says</h1>
-    <button id="hard-mode">Hard Mode</button>
+    <div class="settings">
+      <label for="difficulty-select">difficulty:</label>
+
+      <select name="difficulty" id="difficulty-select">
+        <option value="normal">normal</option>
+        <option value="hard">hard</option>
+      </select>
+    </div>
     <div class="buttons">
       <div>
         <div id="yellow" class="yellow button"></div>
