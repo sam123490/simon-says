@@ -1,4 +1,5 @@
-const buttonColors = ["yellow", "green", "red", "blue"];
+const buttonColors = ["yellow", "green", "red", "blue", "cyan", "purple"];
+let colors = [];
 let gamePattern = [];
 let userPattern = [];
 let gameActive = false;
@@ -16,15 +17,17 @@ const nextSequence = () => {
 };
 
 // add event listener to game buttons
-$(".button").on("click", (event) => {
-  if (gameActive) {
-    const userChosenColor = event.target.id;
-    userPattern.push(userChosenColor);
-    playSound(userChosenColor);
-    animatePress(userChosenColor);
-    checkAnswer(userPattern.length - 1);
-  }
-});
+const addEventListenersToButtons = () => {
+  $(".button").on("click", (event) => {
+    if (gameActive) {
+      const userChosenColor = event.target.id;
+      userPattern.push(userChosenColor);
+      playSound(userChosenColor);
+      animatePress(userChosenColor);
+      checkAnswer(userPattern.length - 1);
+    }
+  });
+}
 
 // play sound and animate on user click
 const playSound = (color) => {
@@ -119,16 +122,17 @@ const deactivateHardMode = () => {
 $("#difficulty-select").on("change", () => {
   const selectDifficultyElement = $("#difficulty-select");
   const difficulty = selectDifficultyElement[0].value;
-  switch (difficulty) {
-    case 'normal':
-      deactivateHardMode();
-      break;
-    case 'hard':
-      activateHardMode();
-      break;
-    default:
-      console.log(`something went wrong, but the selected difficulty is ${value}`);
-  }
+  renderButtons(difficulty);
+  // switch (difficulty) {
+  //   case 'normal':
+  //     deactivateHardMode();
+  //     break;
+  //   case 'hard':
+  //     activateHardMode();
+  //     break;
+  //   default:
+  //     console.log(`something went wrong, but the selected difficulty is ${value}`);
+  // }
 });
 
 const clearButtons = () => {
@@ -136,6 +140,7 @@ const clearButtons = () => {
 };
 
 const renderButtons = (difficulty) => {
+  clearButtons();
   let maxRows = 0;
   let maxPerRow = 0;
   switch (difficulty) {
@@ -148,7 +153,7 @@ const renderButtons = (difficulty) => {
     case 'hard':
       maxRows = 2;
       maxPerRow = 3;
-      colors = buttonColors.push("cyan", "purple");
+      colors = buttonColors;
       break;
 
     default:
@@ -160,6 +165,8 @@ const renderButtons = (difficulty) => {
   while ($(".buttons > div").length < maxRows) {
     $(".buttons").append("<div></div>");
   }
+
+  // add buttons to rows
   let selectedRow = 1;
   colors.forEach((color) => {
     const newButton = `<div id="${color}" class="${color} button"></div>`;
@@ -170,8 +177,11 @@ const renderButtons = (difficulty) => {
       addButton(selectedRow, newButton);
     }
   })
+  addEventListenersToButtons();
 };
 
 const addButton = (row, button) => {
   $(`.buttons > div:nth-child(${row})`).append(button);
 };
+
+renderButtons('normal');
