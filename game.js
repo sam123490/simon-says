@@ -164,10 +164,14 @@ const renderButtons = (difficulty) => {
   colors.forEach((color) => {
     const newButton = `<div id="${color}" class="${color} button"></div>`;
     if ($(`.buttons > div:nth-child(${selectedRow}) > *`).length < maxPerRow) {
-      $(`.buttons > div:nth-child(${selectedRow})`).append(newButton);
+      addButton(selectedRow, newButton);
     } else {
       selectedRow++;
-      $(`.buttons > div:nth-child(${selectedRow})`).append(newButton);
+      addButton(selectedRow, newButton);
     }
   })
+};
+
+const addButton = (row, button) => {
+  $(`.buttons > div:nth-child(${row})`).append(button);
 };
