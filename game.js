@@ -86,11 +86,11 @@ const startOver = () => {
 // activate hard mode
 const activateHardMode = () => {
   $("#hard-mode").addClass("hidden");
-  $(".buttons").append(`
-    <div>
-      <div id="cyan" class="cyan button"></div>
-      <div id="purple" class="purple button"></div>
-    </div>
+  $(".buttons > div:nth-child(1)").append(`
+    <div id="cyan" class="cyan button"></div>
+    `);
+  $(".buttons > div:nth-child(2)").append(`
+    <div id="purple" class="purple button"></div>
     `);
   buttonColors.push("cyan", "purple");
   $(".cyan, .purple").on("click", (event) => {

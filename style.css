@@ -28,7 +28,12 @@ h1 {
 
 .buttons {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons > div {
+  display: flex;
 }
 
 .button {
@@ -45,7 +50,6 @@ h1 {
 
 .green {
   background-color: green;
-  margin-top: 20px;
 }
 
 .red {
@@ -54,7 +58,6 @@ h1 {
 
 .blue {
   background-color: blue;
-  margin-top: 20px;
 }
 
 .cyan {
@@ -63,21 +66,19 @@ h1 {
 
 .purple {
   background-color: rebeccapurple;
-  margin-top: 20px;
 }
 
-.center-button {
-  display: flex;
-  justify-content: center;
+div:has(#start) {
+  text-align: center;
+  margin-top: 10px;
 }
 
 #start {
   border-radius: 15px;
-  padding: 20px;
-  margin: 10px;
+  padding: 10px 25px;
   font-size: 2rem;
   color: white;
-  background-color: blue;
+  background-color: black;
 }
 
 /* Pressed Animation for Game Buttons */
