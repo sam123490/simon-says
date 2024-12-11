@@ -134,3 +134,30 @@ $("#difficulty-select").on("change", () => {
 const clearButtons = () => {
   $(".buttons").empty();
 };
+
+const renderButtons = (difficulty) => {
+  let maxRows = 0;
+  let maxPerRow = 0;
+  switch (difficulty) {
+    case 'normal':
+      maxRows = 2;
+      maxPerRow = 2;
+      buttonColors.slice(0, 3);
+      break;
+
+    case 'hard':
+      maxRows = 2;
+      maxPerRow = 3;
+      buttonColors.push("cyan", "purple");
+      break;
+
+    default:
+      console.log(`selected difficulty: ${difficulty}`)
+      break;
+  }
+
+  // while loop creates necessary rows
+  while ($(".buttons > div").length < maxRows) {
+    $(".buttons").append("<div></div>");
+  }
+};
