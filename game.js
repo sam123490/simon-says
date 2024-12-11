@@ -112,11 +112,13 @@ const renderButtons = (difficulty) => {
     case 'hard':
       maxRows = 2;
       maxPerRow = 3;
-      gameColors = allColors;
+      gameColors = allColors.slice(0, 6);
       break;
 
     case 'extreme':
-      alert("you selected difficulty extreme");
+      maxRows = 3;
+      maxPerRow = 3;
+      gameColors = allColors;
       break;
 
     default:
