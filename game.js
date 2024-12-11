@@ -115,6 +115,10 @@ const renderButtons = (difficulty) => {
       gameColors = allColors;
       break;
 
+    case 'extreme':
+      alert("you selected difficulty extreme");
+      break;
+
     default:
       console.log(`selected difficulty: ${difficulty}`);
       break;
