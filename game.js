@@ -86,59 +86,19 @@ const startOver = () => {
   }, 1000)
 };
 
-// activate hard mode
-const activateHardMode = () => {
-  $("#hard-mode").addClass("hidden");
-  $(".buttons > div:nth-child(1)").append(`
-    <div id="cyan" class="cyan button"></div>
-    `);
-  $(".buttons > div:nth-child(2)").append(`
-    <div id="purple" class="purple button"></div>
-    `);
-  buttonColors.push("cyan", "purple");
-  $(".cyan, .purple").on("click", (event) => {
-    if (gameActive) {
-      const userChosenColor = event.target.id;
-      userPattern.push(userChosenColor);
-      playSound(userChosenColor);
-      animatePress(userChosenColor);
-      checkAnswer(userPattern.length - 1);
-    }
-  })
-};
-
-// deactivate hard mode
-const deactivateHardMode = () => {
-  // remove event handlers on extra buttons
-  $("#cyan, #purple").off();
-  // remove div containing extra buttons
-  $(".buttons div:nth-child(3)").remove();
-  // remove extra colors from buttonColors
-  buttonColors.pop();
-  buttonColors.pop();
-};
-
 // select difficulty
 $("#difficulty-select").on("change", () => {
   const selectDifficultyElement = $("#difficulty-select");
   const difficulty = selectDifficultyElement[0].value;
   renderButtons(difficulty);
-  // switch (difficulty) {
-  //   case 'normal':
-  //     deactivateHardMode();
-  //     break;
-  //   case 'hard':
-  //     activateHardMode();
-  //     break;
-  //   default:
-  //     console.log(`something went wrong, but the selected difficulty is ${value}`);
-  // }
 });
 
+// empty all buttons
 const clearButtons = () => {
   $(".buttons").empty();
 };
 
+// render buttons based off difficulty
 const renderButtons = (difficulty) => {
   clearButtons();
   let maxRows = 0;
@@ -180,8 +140,10 @@ const renderButtons = (difficulty) => {
   addEventListenersToButtons();
 };
 
+// add button Element
 const addButton = (row, button) => {
   $(`.buttons > div:nth-child(${row})`).append(button);
 };
 
+// default to render normal difficulty buttons
 renderButtons('normal');
