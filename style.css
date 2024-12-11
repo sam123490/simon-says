@@ -36,10 +36,18 @@ h1 {
   display: flex;
 }
 
-.button {
+.button-medium {
   height: 200px;
   width: 200px;
   margin: 10px;
+  border: 5px solid black;
+  border-radius: 15px;
+}
+
+.button-small {
+  height: 150px;
+  width: 150px;
+  margin: 7px;
   border: 5px solid black;
   border-radius: 15px;
 }
@@ -68,9 +76,22 @@ h1 {
   background-color: rebeccapurple;
 }
 
+.coral {
+  background-color: coral;
+}
+
+.darkred {
+  background-color: darkred;
+}
+
+.darkseagreen {
+  background-color: darkseagreen;
+}
+
 div:has(#start) {
   text-align: center;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 #start {

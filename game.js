@@ -1,4 +1,4 @@
-const allColors = ["yellow", "green", "red", "blue", "cyan", "purple"];
+const allColors = ["yellow", "green", "red", "blue", "cyan", "purple", "coral", "darkred", "darkseagreen"];
 let gameColors = [];
 let gamePattern = [];
 let userPattern = [];
@@ -103,17 +103,27 @@ const renderButtons = (difficulty) => {
   clearButtons();
   let maxRows = 0;
   let maxPerRow = 0;
+  let buttonSize = "";
   switch (difficulty) {
     case 'normal':
       maxRows = 2;
       maxPerRow = 2;
       gameColors = allColors.slice(0, 4);
+      buttonSize = "button-medium";
       break;
 
     case 'hard':
       maxRows = 2;
       maxPerRow = 3;
+      gameColors = allColors.slice(0, 6);
+      buttonSize = "button-medium";
+      break;
+
+    case 'extreme':
+      maxRows = 3;
+      maxPerRow = 3;
       gameColors = allColors;
+      buttonSize = "button-small";
       break;
 
     default:
@@ -129,7 +139,7 @@ const renderButtons = (difficulty) => {
   // add buttons to rows
   let selectedRow = 1;
   gameColors.forEach((color) => {
-    const newButton = `<div id="${color}" class="${color} button"></div>`;
+    const newButton = `<div id="${color}" class="${color} button ${buttonSize}"></div>`;
     if ($(`.buttons > div:nth-child(${selectedRow}) > *`).length < maxPerRow) {
       addButton(selectedRow, newButton);
     } else {
