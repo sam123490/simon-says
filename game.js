@@ -130,3 +130,7 @@ $("#difficulty-select").on("change", () => {
       console.log(`something went wrong, but the selected difficulty is ${value}`);
   }
 });
+
+const clearButtons = () => {
+  $(".buttons").empty();
+};
