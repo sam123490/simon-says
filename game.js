@@ -25,9 +25,9 @@ const addEventListenersToButtons = () => {
       playSound(userChosenColor);
       animatePress(userChosenColor);
       checkAnswer(userPattern.length - 1);
-    }
+    };
   });
-}
+};
 
 // play sound and animate on user click
 const playSound = (color) => {
@@ -47,7 +47,6 @@ $("#start").on("click", () => {
   gameActive = true;
   nextSequence();
   $("#start").addClass("hidden");
-  // $("#hard-mode").addClass("hidden");
   $(".settings").addClass("hidden");
 });
 
@@ -62,7 +61,7 @@ const checkAnswer = (currentLevel) => {
           nextSequence();
         }
       }, "1000");
-    }
+    };
   } else {
     playSound("wrong");
     $("h1").text(`Game Over!`);
@@ -71,7 +70,7 @@ const checkAnswer = (currentLevel) => {
       $("body").removeClass("game-over");
     }, 400);
     startOver();
-  }
+  };
 };
 
 // reset game on loss
@@ -83,7 +82,7 @@ const startOver = () => {
   setTimeout(() => {
     $("#start").removeClass("hidden");
   $(".settings").removeClass("hidden");
-  }, 1000)
+  }, 1000);
 };
 
 // select difficulty
@@ -107,36 +106,36 @@ const renderButtons = (difficulty) => {
     case 'normal':
       maxRows = 2;
       maxPerRow = 2;
-      colors = allColors.slice(0, 4);
+      gameColors = allColors.slice(0, 4);
       break;
 
     case 'hard':
       maxRows = 2;
       maxPerRow = 3;
-      colors = allColors;
+      gameColors = allColors;
       break;
 
     default:
-      console.log(`selected difficulty: ${difficulty}`)
+      console.log(`selected difficulty: ${difficulty}`);
       break;
-  }
+  };
 
   // while loop creates necessary rows
   while ($(".buttons > div").length < maxRows) {
     $(".buttons").append("<div></div>");
-  }
+  };
 
   // add buttons to rows
   let selectedRow = 1;
-  colors.forEach((color) => {
+  gameColors.forEach((color) => {
     const newButton = `<div id="${color}" class="${color} button"></div>`;
     if ($(`.buttons > div:nth-child(${selectedRow}) > *`).length < maxPerRow) {
       addButton(selectedRow, newButton);
     } else {
       selectedRow++;
       addButton(selectedRow, newButton);
-    }
-  })
+    };
+  });
   addEventListenersToButtons();
 };
 
