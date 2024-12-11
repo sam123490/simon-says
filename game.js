@@ -63,7 +63,8 @@ const checkAnswer = (currentLevel) => {
       }, "1000");
     };
   } else {
-    playSound("wrong");
+    // playSound("wrong");
+    playGameOverSound();
     $("h1").text(`Game Over!`);
     $("body").addClass("game-over");
     setTimeout(() => {
@@ -146,3 +147,18 @@ const addButton = (row, button) => {
 
 // default to render normal difficulty buttons
 renderButtons('normal');
+
+const playGameOverSound = () => {
+  sound = "wrong";
+  if (level >= 5) {
+    sound = "spongebob";
+  }
+  if (level >= 8) {
+    sound = "pac-man";
+  }
+  if (level >= 12) {
+    sound = "gta-v";
+  }
+  const audio = new Audio(`./sounds/${sound}.mp3`);
+  audio.play();
+};
