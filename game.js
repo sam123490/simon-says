@@ -1,5 +1,5 @@
-const buttonColors = ["yellow", "green", "red", "blue", "cyan", "purple"];
-let colors = [];
+const allColors = ["yellow", "green", "red", "blue", "cyan", "purple"];
+let gameColors = [];
 let gamePattern = [];
 let userPattern = [];
 let gameActive = false;
@@ -8,8 +8,8 @@ let level = 1;
 // show user next sequence
 const nextSequence = () => {
   $("h1").text(`Level ${level}`);
-  const randomNumber = Math.floor(Math.random() * colors.length);
-  const randomColor = colors[randomNumber];
+  const randomNumber = Math.floor(Math.random() * gameColors.length);
+  const randomColor = gameColors[randomNumber];
   gamePattern.push(randomColor);
   playSound(randomColor);
   $(`.${randomColor}`).fadeOut(200).fadeIn(200);
@@ -107,13 +107,13 @@ const renderButtons = (difficulty) => {
     case 'normal':
       maxRows = 2;
       maxPerRow = 2;
-      colors = buttonColors.slice(0, 4);
+      colors = allColors.slice(0, 4);
       break;
 
     case 'hard':
       maxRows = 2;
       maxPerRow = 3;
-      colors = buttonColors;
+      colors = allColors;
       break;
 
     default:
