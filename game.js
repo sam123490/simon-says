@@ -1,4 +1,4 @@
-const allColors = ["yellow", "green", "red", "blue", "cyan", "purple"];
+const allColors = ["yellow", "green", "red", "blue", "cyan", "purple", "coral", "darkred", "darkseagreen"];
 let gameColors = [];
 let gamePattern = [];
 let userPattern = [];
