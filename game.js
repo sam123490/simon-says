@@ -142,13 +142,13 @@ const renderButtons = (difficulty) => {
     case 'normal':
       maxRows = 2;
       maxPerRow = 2;
-      buttonColors.slice(0, 3);
+      colors = buttonColors.slice(0, 4);
       break;
 
     case 'hard':
       maxRows = 2;
       maxPerRow = 3;
-      buttonColors.push("cyan", "purple");
+      colors = buttonColors.push("cyan", "purple");
       break;
 
     default:
@@ -160,4 +160,14 @@ const renderButtons = (difficulty) => {
   while ($(".buttons > div").length < maxRows) {
     $(".buttons").append("<div></div>");
   }
+  let selectedRow = 1;
+  colors.forEach((color) => {
+    const newButton = `<div id="${color}" class="${color} button"></div>`;
+    if ($(`.buttons > div:nth-child(${selectedRow}) > *`).length < maxPerRow) {
+      $(`.buttons > div:nth-child(${selectedRow})`).append(newButton);
+    } else {
+      selectedRow++;
+      $(`.buttons > div:nth-child(${selectedRow})`).append(newButton);
+    }
+  })
 };
