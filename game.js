@@ -55,11 +55,23 @@ $("#start").on("click", () => {
   $(".settings").addClass("hidden");
 });
 
+// set and update a highscore in localStorage
+if (!localStorage.getItem("high-score")) {
+  localStorage.setItem("high-score", 0);
+}
+const setHighScore = () => {
+  if (level - 1 > localStorage.getItem("high-score")) {
+    localStorage.setItem("high-score", level - 1);
+    console.log("updated high-score");
+  };
+};
+
 // check user sequence against game sequence
 const checkAnswer = (currentLevel) => {
   if (gamePattern[currentLevel] === userPattern[currentLevel]) {
     console.log("correct");
     if (gamePattern.length === userPattern.length) {
+      setHighScore();
       setTimeout(() => {
         if (gameActive) {
           userPattern = [];
