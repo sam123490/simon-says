@@ -7,13 +7,15 @@ let level = 1;
 
 // show user next sequence
 const nextSequence = () => {
-  $("h1").text(`Level ${level}`);
-  const randomNumber = Math.floor(Math.random() * gameColors.length);
-  const randomColor = gameColors[randomNumber];
-  gamePattern.push(randomColor);
-  playSound(randomColor);
-  $(`.${randomColor}`).fadeOut(200).fadeIn(200);
-  level++;
+  if (gameActive) {
+    $("h1").text(`Level ${level}`);
+    const randomNumber = Math.floor(Math.random() * gameColors.length);
+    const randomColor = gameColors[randomNumber];
+    gamePattern.push(randomColor);
+    playSound(randomColor);
+    $(`.${randomColor}`).fadeOut(200).fadeIn(200);
+    level++;
+  };
 };
 
 // add event listener to game buttons
