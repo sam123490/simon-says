@@ -45,6 +45,7 @@ const animatePress = (color) => {
 // start game
 $("#start").on("click", () => {
   gameActive = true;
+  stopButtonsAnimation();
   setTimeout(() => {
     nextSequence();
   }, 1000);
@@ -74,7 +75,7 @@ const checkAnswer = (currentLevel) => {
     }, 400);
     startOver();
     setTimeout(() => {
-      animateButtons(gameActive);
+      animateButtons();
     }, 1000);
     // playSound("wrong");
   };
@@ -201,17 +202,23 @@ $("#changeColorOrder").on("click", () => {
 });
 
 // button animation while game is not active
-const animateButtons = (active) => {
-  if (!active) {
+const animateButtons = () => {
+  if (!gameActive) {
     const allbuttons = $(".button");
     const randomButtonIndex = Math.floor(Math.random() * allbuttons.length);
     const randomButton = allbuttons[randomButtonIndex];
     $(`#${randomButton.id}`).fadeOut(200).fadeIn(200);
     setTimeout(() => {
-      animateButtons(gameActive);
+      animateButtons();
     }, 600);
-  }
+  };
 };
+
+// remove animations in que, stop current animation, and fadeIn
+const stopButtonsAnimation = () => {
+  $(".button").stop(true, true).fadeIn(1);
+}
+
 setTimeout(() => {
-  animateButtons(gameActive);
+  animateButtons();
 }, 600);
