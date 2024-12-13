@@ -17,6 +17,10 @@
   font-style: normal;
 }
 
+body {
+  background-color:skyblue;
+}
+
 h1 {
   text-align: center;
   font-size: 5rem;

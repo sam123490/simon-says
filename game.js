@@ -45,7 +45,9 @@ const animatePress = (color) => {
 // start game
 $("#start").on("click", () => {
   gameActive = true;
-  nextSequence();
+  setTimeout(() => {
+    nextSequence();
+  }, 1000);
   $("#start").addClass("hidden");
   $(".settings").addClass("hidden");
 });
