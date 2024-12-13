@@ -62,9 +62,12 @@ if (!localStorage.getItem("high-score")) {
 const setHighScore = () => {
   if (level - 1 > localStorage.getItem("high-score")) {
     localStorage.setItem("high-score", level - 1);
+    $(".high-score").text(`High Score: ${localStorage.getItem("high-score")}`);
     console.log("updated high-score");
   };
 };
+
+$(".high-score").text(`High Score: ${localStorage.getItem("high-score")}`);
 
 // check user sequence against game sequence
 const checkAnswer = (currentLevel) => {

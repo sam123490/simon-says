@@ -21,6 +21,12 @@ body {
   background-color:skyblue;
 }
 
+.high-score {
+  position: absolute;
+  margin: 10px;
+  font-size: 2rem;
+}
+
 h1 {
   text-align: center;
   font-size: 5rem;
