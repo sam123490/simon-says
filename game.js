@@ -1,9 +1,23 @@
-const allColors = ["yellow", "green", "red", "blue", "cyan", "purple", "coral", "darkred", "darkseagreen"];
+let allColors = [];
 let gameColors = [];
 let gamePattern = [];
 let userPattern = [];
 let gameActive = false;
 let level = 1;
+
+// create random color order
+const createRandomColorOrder = () => {
+  allColors = [];
+  const colors = ["yellow", "green", "red", "blue", "cyan", "purple", "coral", "darkred", "darkseagreen"];
+  for (let i=0; i < 9; i++) {
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    allColors.push(colors[randomIndex]);
+    colors.splice(randomIndex, 1);
+  };
+  console.log(colors);
+  console.log(allColors);
+};
+createRandomColorOrder();
 
 // show user next sequence
 const nextSequence = () => {
