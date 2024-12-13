@@ -5,20 +5,6 @@ let userPattern = [];
 let gameActive = false;
 let level = 1;
 
-// create random color order
-const createRandomColorOrder = () => {
-  allColors = [];
-  const colors = ["yellow", "green", "red", "blue", "cyan", "purple", "coral", "darkred", "darkseagreen"];
-  for (let i=0; i < 9; i++) {
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    allColors.push(colors[randomIndex]);
-    colors.splice(randomIndex, 1);
-  };
-  console.log(colors);
-  console.log(allColors);
-};
-createRandomColorOrder();
-
 // show user next sequence
 const nextSequence = () => {
   $("h1").text(`Level ${level}`);
@@ -186,3 +172,24 @@ const playGameOverSound = () => {
   const audio = new Audio(`./sounds/${sound}.mp3`);
   audio.play();
 };
+
+// create random color order
+const createRandomColorOrder = () => {
+  allColors = [];
+  const colors = ["yellow", "green", "red", "blue", "cyan", "purple", "coral", "darkred", "darkseagreen"];
+  for (let i=0; i < 9; i++) {
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    allColors.push(colors[randomIndex]);
+    colors.splice(randomIndex, 1);
+  };
+  clearButtons();
+  const selectDifficultyElement = $("#difficulty-select");
+  const difficulty = selectDifficultyElement[0].value;
+  renderButtons(difficulty);
+};
+createRandomColorOrder();
+
+// event listener for createRandomColorOrder()
+$("#changeColorOrder").on("click", () => {
+  createRandomColorOrder();
+});
