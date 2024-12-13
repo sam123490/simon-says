@@ -73,6 +73,10 @@ const checkAnswer = (currentLevel) => {
       $("body").removeClass("game-over");
     }, 400);
     startOver();
+    setTimeout(() => {
+      animateButtons(gameActive);
+    }, 1000);
+    // playSound("wrong");
   };
 };
 
@@ -195,3 +199,19 @@ createRandomColorOrder();
 $("#changeColorOrder").on("click", () => {
   createRandomColorOrder();
 });
+
+// button animation while game is not active
+const animateButtons = (active) => {
+  if (!active) {
+    const allbuttons = $(".button");
+    const randomButtonIndex = Math.floor(Math.random() * allbuttons.length);
+    const randomButton = allbuttons[randomButtonIndex];
+    $(`#${randomButton.id}`).fadeOut(200).fadeIn(200);
+    setTimeout(() => {
+      animateButtons(gameActive);
+    }, 600);
+  }
+};
+setTimeout(() => {
+  animateButtons(gameActive);
+}, 600);
