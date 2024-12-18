@@ -63,6 +63,11 @@ const setHighScore = () => {
   if (level - 1 > localStorage.getItem("high-score")) {
     localStorage.setItem("high-score", level - 1);
     $(".high-score").text(`High Score: ${localStorage.getItem("high-score")}`);
+    $(".high-score").animate({"font-size": "2.5rem"}, () => {
+      setTimeout(() => {
+        $(".high-score").animate({"font-size": "2rem"});
+      }, 400);
+    });
     console.log("updated high-score");
   };
 };
